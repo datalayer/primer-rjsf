@@ -1,6 +1,36 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import FormExample1 from './example/FormExample1';
+import { Theme as MuiV5Theme } from "@rjsf/mui";
+import v8Validator, { customizeValidator } from "@rjsf/validator-ajv8";
+import localize_es from "ajv-i18n/localize/es";
+import Ajv2019 from "ajv/dist/2019.js";
+import Ajv2020 from "ajv/dist/2020.js";
+
+import Playground from "./playground/app";
+
+const esV8Validator = customizeValidator({}, localize_es);
+const AJV8_2019 = customizeValidator({ AjvClass: Ajv2019 });
+const AJV8_2020 = customizeValidator({ AjvClass: Ajv2020 });
+
+const validators = {
+  AJV8: v8Validator,
+  AJV8_es: esV8Validator,
+  AJV8_2019,
+  AJV8_2020,
+  'AJV6 (deprecated)': v6Validator,
+};
+
+const themes = {
+  default: {
+    stylesheet:
+      "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+  },
+  "material-ui-5": {
+    stylesheet: "",
+    theme: MuiV5Theme,
+  },
+};
 
 import './App.css'
 

@@ -8,6 +8,7 @@ const schema: RJSFSchema = {
   required: ["title"],
   properties: {
     title: {type: "string", title: "Title", default: "A new task"},
+    hello: {type: "string", title: "Hello", default: "How are you?"},
     done: {type: "boolean", title: "Done?", default: false}
   }
 };

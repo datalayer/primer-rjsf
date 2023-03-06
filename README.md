@@ -7,6 +7,12 @@ yarn
 yarn dev
 ```
 
+## About Primer
+
+- https://github.com/primer/react
+- https://primer.style/react
+- https://primer.style/design/foundations/icons
+
 ## About RJSF
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
