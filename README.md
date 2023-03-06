@@ -1,8 +1,13 @@
 [![Datalayer](https://assets.datalayer.design/datalayer-25.svg)](https://datalayer.io)
 
-# React JSON Schema Form (RSJF) for Primer
+# React JSON Schema Form (RJSF) for Primer
 
-## About RSJF
+```bash
+yarn
+yarn dev
+```
+
+## About RJSF
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
 - Docs https://rjsf-team.github.io/react-jsonschema-form/docs
