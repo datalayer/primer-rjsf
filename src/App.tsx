@@ -34,7 +34,6 @@ const themes = {
     theme: MuiV5Theme,
   },
 };
-import './App.css'
 
 function App() {
   return (
