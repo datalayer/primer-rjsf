@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import { samples } from "./samples";
-import "react-app-polyfill/ie11";
 import Form, { withTheme } from "@rjsf/core";
 import { shouldRender } from "@rjsf/utils";
 import localValidator from "@rjsf/validator-ajv8";
@@ -336,9 +335,10 @@ function RawValidatorTest({ validator, schema, formData }) {
 class Playground extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
 
     // set default theme
-    const theme = "default";
+    const theme = "material-ui-5";
     const validator = "AJV8";
     // initialize state with Simple data sample
     const { schema, uiSchema, formData, validate } = samples.Simple;
@@ -625,15 +625,6 @@ class Playground extends Component {
                       id="theme"
                       href={this.state.stylesheet || ""}
                     />
-                    {theme === "antd" && (
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            document.getElementById("antd-styles-iframe")
-                              .contentDocument.head.innerHTML,
-                        }}
-                      />
-                    )}
                   </React.Fragment>
                 }
                 style={{

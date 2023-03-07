@@ -1,13 +1,13 @@
 import React from "react";
 
 class ErrorBoundary extends React.Component {
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
   /** Update state so the next render will show the fallback UI. */
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error) {
     return { hasError: true, error: error };
   }
 
