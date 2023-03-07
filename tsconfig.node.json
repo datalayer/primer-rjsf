@@ -1,13 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "allowJs": true,
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
