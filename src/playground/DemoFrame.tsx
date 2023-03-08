@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, cloneElement } from "react";
+import { ThemeProvider, BaseStyles } from '@primer/react';
 import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -32,14 +33,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-function DemoFrame(props) {
+function DemoFrame(props: any) {
   const { children, classes, theme, ...other } = props;
-  const [state, setState] = useState({
+  const [state, setState] = useState<any>({
     ready: false,
   });
-  const instanceRef = useRef();
+  const instanceRef = useRef<any>();
 
-  const handleRef = useCallback((ref) => {
+  const handleRef = useCallback((ref: any) => {
     instanceRef.current = {
       contentDocument: ref ? ref.contentDocument : null,
       contentWindow: ref ? ref.contentWindow : null,
@@ -64,22 +65,40 @@ function DemoFrame(props) {
     });
   };
   let body = children;
-  if (theme === "material-ui-5" || theme === "primer") {
+  if (theme === "material-ui-5") {
     body = state.ready ? (
-      <CacheProvider value={state.emotionCache}>
-        <CssBaseline />
-        {cloneElement(children, {
-          container: state.container,
-          window: state.window,
-        })}
-      </CacheProvider>
+      <ThemeProvider>
+        <BaseStyles>
+          <CacheProvider value={state.emotionCache}>
+            <CssBaseline />
+              {cloneElement(children, {
+                container: state.container,
+                window: state.window,
+              })}
+          </CacheProvider>
+        </BaseStyles>
+      </ThemeProvider>
     ) : null;
   }
+  if (theme === "primer") {
+    body = state.ready ? (
+      <ThemeProvider>
+        <BaseStyles>
+          {cloneElement(children, {
+            container: state.container,
+            window: state.window,
+          })}
+        </BaseStyles>
+      </ThemeProvider>
+    ) : null;
+    console.log('---', theme, body);
+  }
   return (
-    <Frame ref={handleRef} contentDidMount={onContentDidMount} {...other}>
-      <div id="demo-frame-jss" />
-      {body}
-    </Frame>
+    <ThemeProvider>
+      <BaseStyles>
+          {children}
+      </BaseStyles>
+    </ThemeProvider>
   );
 }
 

@@ -20,9 +20,10 @@
     "ajv": "^8.12.0",
     "ajv-i18n": "^4.2.0",
     "jss": "^10.10.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-frame-component": "^5.2.6"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-frame-component": "^5.2.6",
+    "styled-components": "4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -46,5 +47,11 @@
     "babel-loader": "^8.3.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
+  },
+  "resolutions": {
+    "**/@types/react": "18.0.27",
+    "**/@types/react-dom": "18.0.10",
+    "**/react": "18.2.0",
+    "**/react-dom": "18.2.0"
   }
 }

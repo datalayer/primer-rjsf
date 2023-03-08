@@ -34,7 +34,9 @@
     "@mui/material": "^5.2.2",
     "@rjsf/core": "^5.0.0",
     "@rjsf/utils": "^5.0.0",
-    "react": ">=17"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -48,17 +50,16 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
+    "@primer/octicons-react": "17.10.0",
+    "@primer/react": "35.18.0",
     "@rjsf/core": "^5.2.0",
     "@rjsf/utils": "^5.2.0",
     "@rjsf/validator-ajv8": "^5.2.0",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "18.0.27",
     "@types/react-test-renderer": "^17.0.1",
     "dts-cli": "^1.6.3",
     "eslint": "^8.33.0",
     "jest-watch-typeahead": "^2.2.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^4.1.2"
   },
@@ -87,5 +88,11 @@
     "type": "git",
     "url": "git+https://github.com/rjsf-team/react-jsonschema-form.git"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "resolutions": {
+    "**/@types/react": "18.0.27",
+    "**/@types/react-dom": "18.0.10",
+    "**/react": "18.2.0",
+    "**/react-dom": "18.2.0"
+  }
 }
