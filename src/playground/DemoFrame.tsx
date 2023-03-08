@@ -4,7 +4,7 @@ import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { create } from "jss";
-import { jssPreset } from "@material-ui/core/styles";
+import { jssPreset } from "@mui/styles";
 import Frame from "react-frame-component";
 
 /*
