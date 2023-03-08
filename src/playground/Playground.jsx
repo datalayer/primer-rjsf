@@ -378,7 +378,6 @@ class Playground extends Component {
     } else {
       // initialize theme
       this.onThemeSelected(theme, themes[theme]);
-
       this.setState({ form: true });
     }
   }

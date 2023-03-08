@@ -1,9 +1,11 @@
-import { Theme as MuiV5Theme } from "./primer";
 import v8Validator, { customizeValidator } from "@rjsf/validator-ajv8";
 import v6Validator from "@rjsf/validator-ajv6";
 import localize_es from "ajv-i18n/localize/es";
 import Ajv2019 from "ajv/dist/2019.js";
 import Ajv2020 from "ajv/dist/2020.js";
+import { Theme as MuiV5Theme } from "./primer";
+import Playground from "./playground/Playground";
+import FormExample1 from "./examples/FormExample1";
 
 const esV8Validator = customizeValidator({}, localize_es);
 const AJV8_2019 = customizeValidator({ AjvClass: Ajv2019 });
@@ -16,8 +18,6 @@ const validators = {
   AJV8_2020,
   'AJV6 (deprecated)': v6Validator,
 };
-
-import Playground from "./playground/app";
 
 const themes = {
   default: {
@@ -37,7 +37,10 @@ const themes = {
 
 function App() {
   return (
-    <Playground themes={themes} validators={validators} />
+    <>
+      <Playground themes={themes} validators={validators} />
+      <FormExample1 />
+    </>
   )
 }
 
