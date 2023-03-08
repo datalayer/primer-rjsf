@@ -1,4 +1,4 @@
-import { Theme as MuiV5Theme } from "./mui";
+import { Theme as MuiV5Theme } from "./primer";
 import v8Validator, { customizeValidator } from "@rjsf/validator-ajv8";
 import v6Validator from "@rjsf/validator-ajv6";
 import localize_es from "ajv-i18n/localize/es";

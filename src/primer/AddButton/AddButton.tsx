@@ -1,6 +1,3 @@
-import React from "react";
-import AddIcon from "@mui/icons-material/Add";
-import IconButton from "@mui/material/IconButton";
 import {
   FormContextType,
   IconButtonProps,
@@ -8,9 +5,9 @@ import {
   StrictRJSFSchema,
   TranslatableString,
 } from "@rjsf/utils";
+import { Button } from "@primer/react";
+import { PlusIcon } from '@primer/octicons-react';
 
-/** The `AddButton` renders a button that represent the `Add` action on a form
- */
 export default function AddButton<
   T = any,
   S extends StrictRJSFSchema = RJSFSchema,
@@ -18,12 +15,8 @@ export default function AddButton<
 >({ uiSchema, registry, ...props }: IconButtonProps<T, S, F>) {
   const { translateString } = registry;
   return (
-    <IconButton
-      title={translateString(TranslatableString.AddItemButton)}
-      {...props}
-      color="primary"
-    >
-      <AddIcon />
-    </IconButton>
+    <Button variant="primary" leadingIcon={PlusIcon} {...props}>
+      {translateString(TranslatableString.AddItemButton)}
+    </Button>
   );
 }
