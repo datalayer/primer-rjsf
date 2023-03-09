@@ -19,8 +19,8 @@ export default function AddButton<
       variant="primary"
       size="small"
       icon={PlusIcon}
-      onClick={e => e.preventDefault()}
-      onSubmit={e => e.preventDefault()}
+      onClick={(e: any) => e.preventDefault()}
+      onSubmit={(e: any) => e.preventDefault()}
       {...props as any}
     >
       {translateString(TranslatableString.AddItemButton)}
