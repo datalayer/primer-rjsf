@@ -1,8 +1,22 @@
 {
   "name": "@datalayer/rjsf-primer",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "description": "React JSON Schema Form (RJSF) for Primer",
+  "private": false,
+  "version": "0.0.5",
+  "main": "lib/index.js",
+  "keywords": [
+    "react",
+    "json-schema-form",
+    "primer"
+  ],
+  "homepage": "https://github.com/datalayer/rjsf-primer",
+  "bugs": {
+    "url": "https://github.com/datalayer/rjsf-primer/issues"
+  },
+  "license": "BSD-3-Clause",
+  "files": [
+    "lib/**/*.*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,6 +25,12 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "5.11.11",
+    "@mui/material": "5.10.7",
+    "@mui/styles": "5.10.7",
     "@primer/octicons-react": "17.10.0",
     "@primer/react": "35.18.0",
     "@rjsf/core": "5.2.0",
@@ -27,13 +47,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
-    "@emotion/cache": "^11.10.5",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
     "@monaco-editor/react": "4.4.6",
-    "@mui/icons-material": "5.11.11",
-    "@mui/material": "5.10.7",
-    "@mui/styles": "5.10.7",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",

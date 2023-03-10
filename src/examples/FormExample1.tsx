@@ -1,4 +1,4 @@
-import Form from "./../primer";
+import Form from "./../index";
 import { RJSFSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 

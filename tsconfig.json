@@ -1,9 +1,18 @@
 {
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/stories",
+    "**/node_modules"
+  ],
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
+    "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -12,10 +21,11 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
+    "outDir": "lib",
+    "rootDir": "src",
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
