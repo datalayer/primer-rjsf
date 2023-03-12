@@ -2,7 +2,7 @@
 
 # React JSON Schema Form (RJSF) for Primer
 
-This repository contains the [Primer](https://github.com/primer/react) binding for [react-jsonschema-form](https://github.com/rjsf-team/react-jsonschema-form).
+This repository contains the [Primer](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form).
 
 It will generate Primer forms from [JSON Schema](https://json-schema.org).
 
@@ -28,12 +28,12 @@ yarn storybook
 ## About Primer React
 
 - GitHub repository https://github.com/primer/react
-- Documentaiton https://primer.style/react
+- Documentation https://primer.style/react
 - Storybook https://primer.style/react/storybook
 - Icons https://primer.style/design/foundations/icons
 
 ## About RJSF
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
-- Docs https://rjsf-team.github.io/react-jsonschema-form/docs
+- Documentation https://rjsf-team.github.io/react-jsonschema-form/docs
 - Source https://github.com/rjsf-team/react-jsonschema-form
