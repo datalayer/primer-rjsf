@@ -5,7 +5,7 @@ import {
   StrictRJSFSchema,
   TranslatableString,
 } from "@rjsf/utils";
-import { IconButton } from "@primer/react";
+import { IconButton, Tooltip } from "@primer/react";
 import { PlusIcon } from '@primer/octicons-react';
 
 export default function AddButton<
@@ -15,15 +15,14 @@ export default function AddButton<
 >({ uiSchema, registry, ...props }: IconButtonProps<T, S, F>) {
   const { translateString } = registry;
   return (
-    <IconButton
-      variant="primary"
-      size="small"
-      icon={PlusIcon}
-      onClick={(e: any) => e.preventDefault()}
-      onSubmit={(e: any) => e.preventDefault()}
-      {...props as any}
-    >
-      {translateString(TranslatableString.AddItemButton)}
-    </IconButton>
+    <Tooltip aria-label={translateString(TranslatableString.AddItemButton)}>
+      <IconButton
+        variant="primary"
+        size="small"
+        icon={PlusIcon}
+        aria-label={translateString(TranslatableString.AddItemButton)}
+        {...props as any}
+      />
+    </Tooltip>
   );
 }

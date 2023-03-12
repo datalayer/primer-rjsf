@@ -1,6 +1,5 @@
-import ListItem from "@mui/material/ListItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import List from "@mui/material/List";
+import {Text} from "@primer/react";
+
 import {
   errorId,
   FieldErrorProps,
@@ -25,14 +24,10 @@ export default function FieldErrorTemplate<
   const id = errorId<T>(idSchema);
 
   return (
-    <List dense={true} disablePadding={true}>
-      {errors.map((error, i: number) => {
-        return (
-          <ListItem key={i} disableGutters={true}>
-            <FormHelperText id={id}>{error}</FormHelperText>
-          </ListItem>
-        );
-      })}
-    </List>
+    <div id={id}>
+      {errors.map((error, i: number) => (
+        <Text as="p" mb={1} sx={{fontSize: '12px', display: 'block', color: 'danger.fg'}} key={i}>&#x2022;{" " + error}</Text>
+      ))}
+    </div>
   );
 }

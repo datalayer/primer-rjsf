@@ -1,7 +1,5 @@
 import { CSSProperties } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import {Box} from '@primer/react'
 import {
   ArrayFieldTemplateItemType,
   FormContextType,
@@ -42,16 +40,14 @@ export default function ArrayFieldItemTemplate<
     minWidth: 0,
   };
   return (
-    <Grid container={true} alignItems="center">
-      <Grid item={true} xs style={{ overflow: "auto" }}>
-        <Box mb={2}>
-          <Paper elevation={2}>
-            <Box p={2}>{children}</Box>
-          </Paper>
+    <Box sx={{display: 'flex', width: '100%', flexFlow: 'row wrap'}} alignItems="center">
+      <Box sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}} style={{ overflow: "auto" }}>
+        <Box mb={2} p={2} sx={{borderWidth: 1, borderStyle: 'solid', borderColor: 'border.default', borderRadius: 2}}>
+          {children}
         </Box>
-      </Grid>
+      </Box>
       {hasToolbar && (
-        <Grid item={true}>
+        <Box p={1}>
           {(hasMoveUp || hasMoveDown) && (
             <MoveUpButton
               style={btnStyle}
@@ -79,8 +75,8 @@ export default function ArrayFieldItemTemplate<
               registry={registry}
             />
           )}
-        </Grid>
+        </Box>
       )}
-    </Grid>
+    </Box>
   );
 }

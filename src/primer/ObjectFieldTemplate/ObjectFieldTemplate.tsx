@@ -1,4 +1,5 @@
 import Grid from "@mui/material/Grid";
+import {Box} from "@primer/react";
 import {
   FormContextType,
   ObjectFieldTemplateProps,
@@ -73,37 +74,38 @@ export default function ObjectFieldTemplate<
           registry={registry}
         />
       )}
-      <Grid container={true} spacing={2} style={{ marginTop: "10px" }}>
+      <Box sx={{display: 'flex', width: '100%', flexDirection: 'column', flexFlow: 'row wrap'}} style={{ marginTop: "10px" }}>
         {properties.map((element, index) =>
           // Remove the <Grid> if the inner element is hidden as the <Grid>
           // itself would otherwise still take up space.
           element.hidden ? (
             element.content
           ) : (
-            <Grid
-              item={true}
-              xs={12}
+            <Box sx={{flexBasis: '100%', flexGrow: 0, maxWidth: '100%'}}
               key={index}
-              style={{ marginBottom: "10px" }}
+              mb={1}
             >
               {element.content}
-            </Grid>
+            </Box>
           )
         )}
         {canExpand<T, S, F>(schema, uiSchema, formData) && (
-          <Grid container justifyContent="flex-end">
-            <Grid item={true}>
+          <Box sx={{display: 'flex', width: '100%', flexFlow: 'row wrap'}} justifyContent="flex-end">
+            <Box sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}}>
               <AddButton
                 className="object-property-expand"
-                onClick={onAddClick(schema)}
+                onClick={(e:any) => {
+                  e.preventDefault();
+                  onAddClick(schema)();
+                }}
                 disabled={disabled || readonly}
                 uiSchema={uiSchema}
                 registry={registry}
               />
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         )}
-      </Grid>
+      </Box>
     </>
   );
 }

@@ -1,7 +1,6 @@
-import Checkbox from "@mui/material/Checkbox";
+import { FocusEvent } from "react";
+import {Checkbox, CheckboxGroup, FormControl} from "@primer/react";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import FormLabel from "@mui/material/FormLabel";
 import {
   ariaDescribedByIds,
   enumOptionsDeselectValue,
@@ -53,31 +52,29 @@ export default function CheckboxesWidget<
       }
     };
 
-  const _onBlur = ({
-    target: { value },
-  }: React.FocusEvent<HTMLButtonElement>) =>
+    const _onBlur = ({ target: { value } }: FocusEvent<HTMLInputElement | any>) =>
     onBlur(id, enumOptionsValueForIndex<S>(value, enumOptions, emptyValue));
   const _onFocus = ({
     target: { value },
-  }: React.FocusEvent<HTMLButtonElement>) =>
+  }: FocusEvent<HTMLInputElement | any>) =>
     onFocus(id, enumOptionsValueForIndex<S>(value, enumOptions, emptyValue));
 
   return (
-    <>
-      <FormLabel required={required} htmlFor={id}>
+    <CheckboxGroup id={id} required={required}>
+      <CheckboxGroup.Label>
         {label || schema.title}
-      </FormLabel>
-      <FormGroup id={id} row={!!inline}>
-        {Array.isArray(enumOptions) &&
-          enumOptions.map((option, index: number) => {
-            const checked = enumOptionsIsSelected<S>(
-              option.value,
-              checkboxesValues
-            );
-            const itemDisabled =
-              Array.isArray(enumDisabled) &&
-              enumDisabled.indexOf(option.value) !== -1;
-            const checkbox = (
+      </CheckboxGroup.Label>
+      {Array.isArray(enumOptions) &&
+        enumOptions.map((option, index: number) => {
+          const checked = enumOptionsIsSelected<S>(
+            option.value,
+            checkboxesValues
+          );
+          const itemDisabled =
+            Array.isArray(enumDisabled) &&
+            enumDisabled.indexOf(option.value) !== -1;
+          return (
+            <FormControl>
               <Checkbox
                 id={optionId(id, index)}
                 name={id}
@@ -89,16 +86,10 @@ export default function CheckboxesWidget<
                 onFocus={_onFocus}
                 aria-describedby={ariaDescribedByIds<T>(id)}
               />
-            );
-            return (
-              <FormControlLabel
-                control={checkbox}
-                key={index}
-                label={option.label}
-              />
-            );
-          })}
-      </FormGroup>
-    </>
+              <FormControl.Label>{option.label}</FormControl.Label>
+            </FormControl>
+          );
+        })}
+    </CheckboxGroup>
   );
 }

@@ -1,6 +1,5 @@
-import Box from "@mui/material/Box";
+import {Box, Heading} from "@primer/react";
 import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
 import {
   FormContextType,
   TitleFieldProps,
@@ -18,9 +17,8 @@ export default function TitleField<
   F extends FormContextType = any
 >({ id, title }: TitleFieldProps<T, S, F>) {
   return (
-    <Box id={id} mb={1} mt={1}>
-      <Typography variant="h5">{title}</Typography>
-      <Divider />
+    <Box id={id} my={2}>
+      <Heading as="h5" sx={{fontSize: 1, borderBottom: '1px solid', borderColor: 'border.default', paddingBottom: 1}}>{title}</Heading>
     </Box>
   );
 }

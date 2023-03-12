@@ -1,5 +1,4 @@
-import FormControl from "@mui/material/FormControl";
-import Typography from "@mui/material/Typography";
+import {FormControl} from "@primer/react";
 import {
   FieldTemplateProps,
   FormContextType,
@@ -66,16 +65,10 @@ export default function FieldTemplate<
       uiSchema={uiSchema}
       registry={registry}
     >
-      <FormControl
-        fullWidth={true}
-        error={rawErrors.length ? true : false}
-        required={required}
-      >
+      <FormControl required={required}>
         {children}
         {displayLabel && rawDescription ? (
-          <Typography variant="caption" color="textSecondary">
-            {rawDescription}
-          </Typography>
+          <FormControl.Caption id={id}>{rawDescription}</FormControl.Caption>
         ) : null}
         {errors}
         {help}

@@ -1,6 +1,4 @@
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import {Box} from "@primer/react";
 import {
   getTemplate,
   getUiOptions,
@@ -56,47 +54,45 @@ export default function ArrayFieldTemplate<
     ButtonTemplates: { AddButton },
   } = registry.templates;
   return (
-    <Paper elevation={2}>
-      <Box p={2}>
-        <ArrayFieldTitleTemplate
-          idSchema={idSchema}
-          title={uiOptions.title || title}
-          schema={schema}
-          uiSchema={uiSchema}
-          required={required}
-          registry={registry}
-        />
-        <ArrayFieldDescriptionTemplate
-          idSchema={idSchema}
-          description={uiOptions.description || schema.description}
-          schema={schema}
-          uiSchema={uiSchema}
-          registry={registry}
-        />
-        <Grid container={true} key={`array-item-list-${idSchema.$id}`}>
-          {items &&
-            items.map(
-              ({ key, ...itemProps }: ArrayFieldTemplateItemType<T, S, F>) => (
-                <ArrayFieldItemTemplate key={key} {...itemProps} />
-              )
-            )}
-          {canAdd && (
-            <Grid container justifyContent="flex-end">
-              <Grid item={true}>
-                <Box mt={2}>
-                  <AddButton
-                    className="array-item-add"
-                    onClick={onAddClick}
-                    disabled={disabled || readonly}
-                    uiSchema={uiSchema}
-                    registry={registry}
-                  />
-                </Box>
-              </Grid>
-            </Grid>
+    <Box p={3}  sx={{display: 'flex', width: '100%', flexFlow: 'row wrap', borderWidth: 1, borderStyle: 'solid', borderColor: 'border.default', borderRadius: 2}}>
+      <ArrayFieldTitleTemplate
+        idSchema={idSchema}
+        title={uiOptions.title || title}
+        schema={schema}
+        uiSchema={uiSchema}
+        required={required}
+        registry={registry}
+      />
+      <ArrayFieldDescriptionTemplate
+        idSchema={idSchema}
+        description={uiOptions.description || schema.description}
+        schema={schema}
+        uiSchema={uiSchema}
+        registry={registry}
+      />
+      <Box sx={{display: 'flex', width: '100%', flexFlow: 'row wrap'}} key={`array-item-list-${idSchema.$id}`}>
+        {items &&
+          items.map(
+            ({ key, ...itemProps }: ArrayFieldTemplateItemType<T, S, F>) => (
+              <ArrayFieldItemTemplate key={key} {...itemProps} />
+            )
           )}
-        </Grid>
+        {canAdd && (
+          <Box sx={{display: 'flex', width: '100%', flexFlow: 'row wrap'}} justifyContent="flex-end">
+            <Box sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}} >
+              <Box mt={2}>
+                <AddButton
+                  className="array-item-add"
+                  onClick={onAddClick}
+                  disabled={disabled || readonly}
+                  uiSchema={uiSchema}
+                  registry={registry}
+                />
+              </Box>
+            </Box>
+          </Box>
+        )}
       </Box>
-    </Paper>
+    </Box>
   );
 }

@@ -1,5 +1,5 @@
 import MenuItem from "@mui/material/MenuItem";
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import { FormControl, Select, SelectProps } from "@primer/react";
 import {
   ariaDescribedByIds,
   enumOptionsIndexForValue,
@@ -39,7 +39,7 @@ export default function SelectWidget<
   uiSchema,
   hideError,
   formContext,
-  ...textFieldProps
+  ...selectFieldProps
 }: WidgetProps<T, S, F>) {
   const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
 
@@ -55,11 +55,13 @@ export default function SelectWidget<
     target: { value },
   }: React.ChangeEvent<{ value: string }>) =>
     onChange(enumOptionsValueForIndex<S>(value, enumOptions, optEmptyVal));
-  const _onBlur = ({ target: { value } }: React.FocusEvent<HTMLInputElement>) =>
+  const _onBlur =  ({
+    target: { value },
+  }: React.FocusEvent<{ value: string }>) =>
     onBlur(id, enumOptionsValueForIndex<S>(value, enumOptions, optEmptyVal));
   const _onFocus = ({
     target: { value },
-  }: React.FocusEvent<HTMLInputElement>) =>
+  }: React.FocusEvent<HTMLSelectElement>) =>
     onFocus(id, enumOptionsValueForIndex<S>(value, enumOptions, optEmptyVal));
   const selectedIndexes = enumOptionsIndexForValue<S>(
     value,
@@ -68,41 +70,34 @@ export default function SelectWidget<
   );
 
   return (
-    <TextField
-      id={id}
-      name={id}
-      label={label || schema.title}
-      value={isEmpty ? emptyValue : selectedIndexes}
-      required={required}
-      disabled={disabled || readonly}
-      autoFocus={autofocus}
-      placeholder={placeholder}
-      error={rawErrors.length > 0}
-      onChange={_onChange}
-      onBlur={_onBlur}
-      onFocus={_onFocus}
-      {...(textFieldProps as TextFieldProps)}
-      select // Apply this and the following props after the potential overrides defined in textFieldProps
-      InputLabelProps={{
-        ...textFieldProps.InputLabelProps,
-        shrink: !isEmpty,
-      }}
-      SelectProps={{
-        ...textFieldProps.SelectProps,
-        multiple,
-      }}
-      aria-describedby={ariaDescribedByIds<T>(id)}
-    >
-      {Array.isArray(enumOptions) &&
-        enumOptions.map(({ value, label }, i: number) => {
-          const disabled: boolean =
-            Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
-          return (
-            <MenuItem key={i} value={String(i)} disabled={disabled}>
-              {label}
-            </MenuItem>
-          );
-        })}
-    </TextField>
+    <FormControl required={required}>
+      <FormControl.Label htmlFor={id}>{label || schema.title}</FormControl.Label>
+      <Select
+        id={id}
+        name={id}
+        //label={label || schema.title}
+        value={isEmpty ? emptyValue : selectedIndexes}
+        disabled={disabled || readonly}
+        autoFocus={autofocus}
+        placeholder={label || schema.title}
+        validationStatus={rawErrors.length > 0 ? "error" : undefined}
+        onChange={_onChange}
+        onBlur={_onBlur}
+        onFocus={_onFocus}
+        {...(selectFieldProps as SelectProps)}
+        aria-describedby={ariaDescribedByIds<T>(id)}
+      >
+        {Array.isArray(enumOptions) &&
+          enumOptions.map(({ value, label }, i: number) => {
+            const disabled: boolean =
+              Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
+            return (
+              <Select.Option key={i} value={String(i)} disabled={disabled}>
+                {label}
+              </Select.Option>
+            );
+          })}
+      </Select>
+    </FormControl>
   );
 }

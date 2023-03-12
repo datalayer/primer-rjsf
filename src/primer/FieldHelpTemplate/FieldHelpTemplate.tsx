@@ -1,4 +1,4 @@
-import FormHelperText from "@mui/material/FormHelperText";
+import {FormControl} from "@primer/react";
 import {
   helpId,
   FieldHelpProps,
@@ -21,5 +21,5 @@ export default function FieldHelpTemplate<
     return null;
   }
   const id = helpId<T>(idSchema);
-  return <FormHelperText id={id}>{help}</FormHelperText>;
+  return <FormControl.Caption id={id}>{help}</FormControl.Caption>;
 }

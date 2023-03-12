@@ -1,9 +1,5 @@
-import IconButton, {
-  IconButtonProps as MuiIconButtonProps,
-} from "@mui/material/IconButton";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import RemoveIcon from "@mui/icons-material/Remove";
+import { IconButton, IconButtonProps as PrimerIconButtonProps, Tooltip } from "@primer/react";
+import { ArrowUpIcon, ArrowDownIcon, TrashIcon } from '@primer/octicons-react';
 import {
   FormContextType,
   IconButtonProps,
@@ -12,20 +8,24 @@ import {
   TranslatableString,
 } from "@rjsf/utils";
 
-export default function MuiIconButton<
+export default function PrimerIconButton<
   T = any,
   S extends StrictRJSFSchema = RJSFSchema,
   F extends FormContextType = any
->(props: IconButtonProps<T, S, F>) {
-  const { icon, color, uiSchema, registry, ...otherProps } = props;
+>({uiSchema, color, title, icon, ...props }: IconButtonProps<T, S, F>) {
+  if (!color) color = "primary"
   return (
-    <IconButton
-      {...otherProps}
-      size="small"
-      color={color as MuiIconButtonProps["color"]}
-    >
-      {icon}
-    </IconButton>
+    <Tooltip sx={{p: 1}} aria-label={color}>
+      <IconButton
+        variant={color as PrimerIconButtonProps["variant"]}
+        size="small"
+        icon={icon}
+        onClick={(e: any) => e.preventDefault()}
+        onSubmit={(e: any) => e.preventDefault()}
+        aria-label={title}
+        {...props as any}
+      />
+    </Tooltip>
   );
 }
 
@@ -38,10 +38,10 @@ export function MoveDownButton<
     registry: { translateString },
   } = props;
   return (
-    <MuiIconButton
+    <PrimerIconButton
       title={translateString(TranslatableString.MoveDownButton)}
+      icon={ArrowDownIcon}
       {...props}
-      icon={<ArrowDownwardIcon fontSize="small" />}
     />
   );
 }
@@ -55,10 +55,10 @@ export function MoveUpButton<
     registry: { translateString },
   } = props;
   return (
-    <MuiIconButton
+    <PrimerIconButton
       title={translateString(TranslatableString.MoveUpButton)}
       {...props}
-      icon={<ArrowUpwardIcon fontSize="small" />}
+      icon={ArrowUpIcon}
     />
   );
 }
@@ -73,13 +73,11 @@ export function RemoveButton<
     registry: { translateString },
   } = otherProps;
   return (
-    <MuiIconButton
+    <PrimerIconButton
       title={translateString(TranslatableString.RemoveButton)}
       {...otherProps}
-      color="error"
-      icon={
-        <RemoveIcon fontSize={iconType === "default" ? undefined : "small"} />
-      }
+      color="danger"
+      icon={TrashIcon}
     />
   );
 }

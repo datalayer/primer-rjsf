@@ -1,4 +1,4 @@
-import Typography from "@mui/material/Typography";
+import {Text} from "@primer/react";
 import {
   DescriptionFieldProps,
   FormContextType,
@@ -18,9 +18,9 @@ export default function DescriptionField<
   const { id, description } = props;
   if (description) {
     return (
-      <Typography id={id} variant="subtitle2" style={{ marginTop: "5px" }}>
+      <Text id={id} as="p" mt={1}>
         {description}
-      </Typography>
+      </Text>
     );
   }
 

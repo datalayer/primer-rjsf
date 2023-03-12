@@ -1,5 +1,5 @@
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import { ChangeEvent, FocusEvent } from "react";
+import {Checkbox, FormControl} from "@primer/react";
 import {
   ariaDescribedByIds,
   schemaRequiresTrueValue,
@@ -36,31 +36,29 @@ export default function CheckboxWidget<
   // "const" or "enum" keywords
   const required = schemaRequiresTrueValue<S>(schema);
 
-  const _onChange = (_: any, checked: boolean) => onChange(checked);
-  const _onBlur = ({
-    target: { value },
-  }: React.FocusEvent<HTMLButtonElement>) => onBlur(id, value);
+  const _onChange = ({ target: { checked } }: ChangeEvent<HTMLInputElement>) =>
+    onChange(checked);
+  const _onBlur = ({ target: { value } }: FocusEvent<HTMLInputElement | any>) =>
+    onBlur(id, value);
   const _onFocus = ({
     target: { value },
-  }: React.FocusEvent<HTMLButtonElement>) => onFocus(id, value);
+  }: FocusEvent<HTMLInputElement | any>) => onFocus(id, value);
 
   return (
-    <FormControlLabel
-      control={
-        <Checkbox
-          id={id}
-          name={id}
-          checked={typeof value === "undefined" ? false : Boolean(value)}
-          required={required}
-          disabled={disabled || readonly}
-          autoFocus={autofocus}
-          onChange={_onChange}
-          onBlur={_onBlur}
-          onFocus={_onFocus}
-          aria-describedby={ariaDescribedByIds<T>(id)}
-        />
-      }
-      label={label || ""}
-    />
+    <FormControl>
+      <Checkbox 
+        id={id}
+        name={id}
+        checked={typeof value === "undefined" ? false : Boolean(value)}
+        required={required}
+        disabled={disabled || readonly}
+        autoFocus={autofocus}
+        onChange={_onChange}
+        onBlur={_onBlur}
+        onFocus={_onFocus}
+        aria-describedby={ariaDescribedByIds<T>(id)}
+      />
+      <FormControl.Label>{label || ""}</FormControl.Label>
+    </FormControl>
   );
 }

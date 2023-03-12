@@ -1,4 +1,4 @@
-import FormLabel from "@mui/material/FormLabel";
+import { FormControl } from "@primer/react"
 import Slider from "@mui/material/Slider";
 import {
   ariaDescribedByIds,
@@ -28,7 +28,6 @@ export default function RangeWidget<
     options,
     schema,
     onChange,
-    required,
     label,
     id,
   } = props;
@@ -45,9 +44,9 @@ export default function RangeWidget<
 
   return (
     <>
-      <FormLabel required={required} htmlFor={id}>
+      <FormControl.Label htmlFor={id}>
         {label || schema.title}
-      </FormLabel>
+      </FormControl.Label>
       <Slider
         disabled={disabled || readonly}
         onChange={_onChange}

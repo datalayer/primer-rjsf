@@ -1,6 +1,5 @@
 import { CSSProperties } from "react";
-import FormControl from "@mui/material/FormControl";
-import Grid from "@mui/material/Grid";
+import { Box, FormControl, TextInput } from "@primer/react";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/OutlinedInput";
 import {
@@ -61,31 +60,32 @@ export default function WrapIfAdditionalTemplate<
     onKeyChange(target.value);
 
   return (
-    <Grid
-      container
+    <Box
+      sx={{display: 'flex', width: '100%', flexFlow: 'row wrap'}} 
       key={`${id}-key`}
       alignItems="center"
-      spacing={2}
+      //spacing={2}
       className={classNames}
       style={style}
     >
-      <Grid item xs>
-        <FormControl fullWidth={true} required={required}>
-          <InputLabel>{keyLabel}</InputLabel>
-          <Input
+      <Box pr={2} sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}}>
+        <FormControl required={required}>
+          <FormControl.Label>{keyLabel}</FormControl.Label>
+          <TextInput
             defaultValue={label}
             disabled={disabled || readonly}
             id={`${id}-key`}
             name={`${id}-key`}
             onBlur={!readonly ? handleBlur : undefined}
             type="text"
+            block
           />
         </FormControl>
-      </Grid>
-      <Grid item={true} xs>
+      </Box>
+      <Box pr={2} sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}}>
         {children}
-      </Grid>
-      <Grid item={true}>
+      </Box>
+      <Box>
         <RemoveButton
           iconType="default"
           style={btnStyle}
@@ -94,7 +94,7 @@ export default function WrapIfAdditionalTemplate<
           uiSchema={uiSchema}
           registry={registry}
         />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 }

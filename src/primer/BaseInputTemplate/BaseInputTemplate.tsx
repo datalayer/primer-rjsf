@@ -1,4 +1,4 @@
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import {FormControl, TextInput, TextInputProps} from "@primer/react";
 import {
   ariaDescribedByIds,
   examplesId,
@@ -68,21 +68,22 @@ export default function BaseInputTemplate<
 
   return (
     <>
-      <TextField
+      {displayLabel && <FormControl.Label visuallyHidden={!(label || schema.title)} htmlFor={id}>{label || schema.title}</FormControl.Label>}
+      <TextInput
         id={id}
         name={id}
         placeholder={placeholder}
-        label={displayLabel ? label || schema.title : false}
         autoFocus={autofocus}
         required={required}
         disabled={disabled || readonly}
         {...otherProps}
         value={value || value === 0 ? value : ""}
-        error={rawErrors.length > 0}
+        validationStatus={rawErrors.length > 0 ? "error" : undefined}
         onChange={_onChange}
         onBlur={_onBlur}
         onFocus={_onFocus}
-        {...(textFieldProps as TextFieldProps)}
+        block
+        {...(textFieldProps as TextInputProps)}
         aria-describedby={ariaDescribedByIds<T>(id, !!schema.examples)}
       />
       {Array.isArray(schema.examples) && (

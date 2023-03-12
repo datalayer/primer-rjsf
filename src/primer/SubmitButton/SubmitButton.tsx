@@ -1,5 +1,4 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import {Box, Button} from "@primer/react";
 import {
   getSubmitButtonOptions,
   FormContextType,
@@ -24,11 +23,10 @@ export default function SubmitButton<
     return null;
   }
   return (
-    <Box marginTop={3}>
+    <Box marginTop={2}>
       <Button
         type="submit"
-        variant="contained"
-        color="primary"
+        variant="primary"
         {...submitButtonProps}
       >
         {submitText}

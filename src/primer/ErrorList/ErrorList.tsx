@@ -1,11 +1,6 @@
-import ErrorIcon from "@mui/icons-material/Error";
-import Box from "@mui/material/Box";
+import {Box, Flash, Heading} from '@primer/react'
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import {
   ErrorListProps,
   FormContextType,
@@ -25,24 +20,19 @@ export default function ErrorList<
 >({ errors, registry }: ErrorListProps<T, S, F>) {
   const { translateString } = registry;
   return (
-    <Paper elevation={2}>
-      <Box mb={2} p={2}>
-        <Typography variant="h6">
+    <Box mb={3} sx={{borderWidth: 1, borderStyle: 'solid', borderColor: 'border.default', borderRadius: 2}}>
+      <Box p={3}>
+        <Heading as="h3" sx={{fontSize: 3}}>
           {translateString(TranslatableString.ErrorsLabel)}
-        </Typography>
-        <List dense={true}>
+        </Heading>
+        <>
           {errors.map((error, i: number) => {
             return (
-              <ListItem key={i}>
-                <ListItemIcon>
-                  <ErrorIcon color="error" />
-                </ListItemIcon>
-                <ListItemText primary={error.stack} />
-              </ListItem>
+              <Flash variant="danger" sx={{marginTop: 2}}>{error.stack}</Flash>
             );
           })}
-        </List>
+        </>
       </Box>
-    </Paper>
+    </Box>
   );
 }

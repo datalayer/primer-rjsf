@@ -1,31 +1,67 @@
+import { ChangeEvent, FocusEvent } from "react";
+import { FormControl, Textarea } from "@primer/react";
 import {
+  ariaDescribedByIds,
   FormContextType,
   RJSFSchema,
   StrictRJSFSchema,
   WidgetProps,
-  getTemplate,
 } from "@rjsf/utils";
 
-/** The `TextareaWidget` is a widget for rendering input fields as textarea.
- *
- * @param props - The `WidgetProps` for this component
- */
 export default function TextareaWidget<
   T = any,
   S extends StrictRJSFSchema = RJSFSchema,
   F extends FormContextType = any
->(props: WidgetProps<T, S, F>) {
-  const { options, registry } = props;
-  const BaseInputTemplate = getTemplate<"BaseInputTemplate", T, S, F>(
-    "BaseInputTemplate",
-    registry,
-    options
+>({
+  id,
+  placeholder,
+  value,
+  label,
+  disabled,
+  autofocus,
+  readonly,
+  onBlur,
+  onFocus,
+  onChange,
+  options,
+  schema,
+  uiSchema,
+  required,
+  rawErrors = [],
+  registry,
+}: WidgetProps<T, S, F>) {
+  const { schemaUtils } = registry;
+  const displayLabel =
+    schemaUtils.getDisplayLabel(schema, uiSchema) &&
+    (!!label || !!schema.title);
+
+  const _onChange = ({ target: { value } }: ChangeEvent<HTMLTextAreaElement>) =>
+    onChange(value === "" ? options.emptyValue : value);
+  const _onBlur = ({ target: { value } }: FocusEvent<HTMLTextAreaElement>) =>
+    onBlur(id, value);
+  const _onFocus = ({ target: { value } }: FocusEvent<HTMLTextAreaElement>) =>
+    onFocus(id, value);
+
+  return (
+    <>
+      {displayLabel ? (
+        <FormControl.Label htmlFor={id}>{label || schema.title}</FormControl.Label>
+      ) : null}
+      <Textarea
+        id={id}
+        name={id}
+        value={value ?? ""}
+        placeholder={placeholder}
+        autoFocus={autofocus}
+        required={required}
+        disabled={disabled || readonly}
+        validationStatus={rawErrors.length > 0 ? "error" : undefined}
+        onChange={_onChange}
+        onBlur={_onBlur}
+        onFocus={_onFocus}
+        block
+        aria-describedby={ariaDescribedByIds<T>(id)}
+      />
+    </>
   );
-
-  let rows: string | number = 5;
-  if (typeof options.rows === "string" || typeof options.rows === "number") {
-    rows = options.rows;
-  }
-
-  return <BaseInputTemplate {...props} multiline rows={rows} />;
 }
