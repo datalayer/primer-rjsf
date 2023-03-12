@@ -1,9 +1,9 @@
 import { ThemeProvider, BaseStyles } from '@primer/react';
 
 function DemoFrame(props: any) {
-  const { children, classes, theme, ...other } = props;
+  const { children, subtheme } = props;
   return (
-    <ThemeProvider>
+    <ThemeProvider dayScheme={subtheme}>
       <BaseStyles>
         {children}
       </BaseStyles>

@@ -338,7 +338,7 @@ class Playground extends Component {
     console.log(props)
 
     // set default theme
-    const theme = "material-ui-5";
+    const theme = "default";
     const validator = "AJV8";
     // initialize state with Simple data sample
     const { schema, uiSchema, formData, validate } = samples.Simple;
@@ -613,7 +613,7 @@ class Playground extends Component {
             </div>
           )}
         </div>
-        <div className="col-sm-5">
+        <div className="col-sm-5 py-4" style={(subtheme && subtheme.startsWith("dark")) ? {backgroundColor: "#141c24"}: {}} >
           <ErrorBoundary>
             {this.state.form && (
               <DemoFrame
@@ -631,7 +631,7 @@ class Playground extends Component {
                   height: 1000,
                   border: 0,
                 }}
-                theme={theme}
+                subtheme={subtheme}
               >
                 <FormComponent
                   {...templateProps}
