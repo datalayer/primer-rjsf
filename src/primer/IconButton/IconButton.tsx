@@ -1,5 +1,5 @@
 import { IconButton, IconButtonProps as PrimerIconButtonProps, Tooltip } from "@primer/react";
-import { ArrowUpIcon, ArrowDownIcon, TrashIcon } from '@primer/octicons-react';
+import { ArrowUpIcon, ArrowDownIcon, TrashIcon, Icon } from '@primer/octicons-react';
 import {
   FormContextType,
   IconButtonProps,
@@ -12,7 +12,7 @@ export default function PrimerIconButton<
   T = any,
   S extends StrictRJSFSchema = RJSFSchema,
   F extends FormContextType = any
->({uiSchema, color, title, icon, ...props }: IconButtonProps<T, S, F>) {
+>({uiSchema, color, title, icon, ...props }: Omit<IconButtonProps<T, S, F>, "icon"> & {icon: Icon}) {
   if (!color) color = "primary"
   return (
     <Tooltip sx={{p: 1}} aria-label={color}>
@@ -40,8 +40,8 @@ export function MoveDownButton<
   return (
     <PrimerIconButton
       title={translateString(TranslatableString.MoveDownButton)}
-      icon={ArrowDownIcon}
       {...props}
+      icon={ArrowDownIcon}
     />
   );
 }
