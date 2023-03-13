@@ -1,6 +1,5 @@
 import { FocusEvent } from "react";
 import {Checkbox, CheckboxGroup, FormControl} from "@primer/react";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import {
   ariaDescribedByIds,
   enumOptionsDeselectValue,

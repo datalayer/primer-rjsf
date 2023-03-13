@@ -1,7 +1,5 @@
 import { CSSProperties } from "react";
 import { Box, FormControl, TextInput } from "@primer/react";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/OutlinedInput";
 import {
   ADDITIONAL_PROPERTY_FLAG,
   FormContextType,

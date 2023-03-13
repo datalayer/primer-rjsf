@@ -1,6 +1,4 @@
 import {Box, Flash, Heading} from '@primer/react'
-import List from "@mui/material/List";
-import Paper from "@mui/material/Paper";
 import {
   ErrorListProps,
   FormContextType,

@@ -1,5 +1,4 @@
 import {Box, Heading} from "@primer/react";
-import Divider from "@mui/material/Divider";
 import {
   FormContextType,
   TitleFieldProps,

@@ -1,4 +1,3 @@
-import MenuItem from "@mui/material/MenuItem";
 import { FormControl, Select, SelectProps } from "@primer/react";
 import {
   ariaDescribedByIds,
