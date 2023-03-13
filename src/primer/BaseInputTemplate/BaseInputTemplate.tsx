@@ -68,7 +68,7 @@ export default function BaseInputTemplate<
 
   return (
     <>
-      {displayLabel && <FormControl.Label visuallyHidden={!(label || schema.title)} htmlFor={id}>{label || schema.title}</FormControl.Label>}
+      <FormControl.Label visuallyHidden={!displayLabel} htmlFor={id}>{label || schema.title}</FormControl.Label>
       <TextInput
         id={id}
         name={id}

@@ -43,10 +43,8 @@ export default function TextareaWidget<
     onFocus(id, value);
 
   return (
-    <>
-      {displayLabel ? (
-        <FormControl.Label htmlFor={id}>{label || schema.title}</FormControl.Label>
-      ) : null}
+    <>      
+      <FormControl.Label visuallyHidden={!displayLabel} htmlFor={id}>{label || schema.title}</FormControl.Label>
       <Textarea
         id={id}
         name={id}
