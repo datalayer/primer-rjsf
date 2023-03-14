@@ -2,13 +2,11 @@
 
 # React JSON Schema Form (RJSF) for Primer
 
-This repository contains the [Primer](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form).
+This repository contains the [Primer](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form). It will generate Primer forms from your [JSON Schema](https://json-schema.org).
 
-It will generate Primer forms from [JSON Schema](https://json-schema.org).
+You can browse the [online playground](https://datalayer.github.io/rjsf-primer). A simple example is available on [this codesanbox](https://codesandbox.io/p/sandbox/rjsf-primer-example-4kcrrp?file=%2Fpackage.json).
 
-You can browse the [online playground](https://datalayer.github.io/rjsf-primer).
-
-A simple example is available on [this codesanbox](https://codesandbox.io/p/sandbox/rjsf-primer-example-4kcrrp?file=%2Fpackage.json).
+This package is published in NPM as `@datalayer/rjsf-primer`.
 
 <div align="center" style="text-align: center">
   <img alt="RJSF Primer Codesanbox" src="https://datalayer-jupyter-examples.s3.amazonaws.com/rjsf-primer-codesandbox.png" />
@@ -17,8 +15,12 @@ A simple example is available on [this codesanbox](https://codesandbox.io/p/sand
 ## Develop
 
 ```bash
-# Install and start the playground.
+# Install dependencies.
 yarn
+```
+
+```bash
+# Start the playground.
 yarn dev
 ```
 
@@ -34,7 +36,7 @@ yarn storybook
 - Storybook https://primer.style/react/storybook
 - Icons https://primer.style/design/foundations/icons
 
-## About RJSF
+## About React JSON Schema Form
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
 - Documentation https://rjsf-team.github.io/react-jsonschema-form/docs
