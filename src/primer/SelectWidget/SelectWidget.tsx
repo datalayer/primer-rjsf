@@ -1,4 +1,5 @@
-import { FormControl, Select, SelectProps } from "@primer/react";
+import { TriangleDownIcon } from "@primer/octicons-react";
+import { Button, FormControl, Select, SelectPanel, SelectProps } from "@primer/react";
 import {
   ariaDescribedByIds,
   enumOptionsIndexForValue,
@@ -8,6 +9,7 @@ import {
   StrictRJSFSchema,
   WidgetProps,
 } from "@rjsf/utils";
+import { useState } from "react";
 
 /** The `SelectWidget` is a widget for rendering dropdowns.
  *  It is typically used with string properties constrained with enum options.
@@ -41,6 +43,7 @@ export default function SelectWidget<
   ...selectFieldProps
 }: WidgetProps<T, S, F>) {
   const { enumOptions, enumDisabled, emptyValue: optEmptyVal } = options;
+  const [open, setOpen] = useState(false)
 
   multiple = typeof multiple === "undefined" ? false : !!multiple;
 
@@ -49,6 +52,16 @@ export default function SelectWidget<
     typeof value === "undefined" ||
     (multiple && value.length < 1) ||
     (!multiple && value === emptyValue);
+ 
+  const items = enumOptions?.map(({ value, label }, i: number) => {
+    const disabled: boolean =
+      Array.isArray(enumDisabled) && enumDisabled.indexOf(value) !== -1;
+    return {
+      text: label,
+      id: i,
+      disabled,
+    }
+  });
 
   const _onChange = ({
     target: { value },
@@ -69,12 +82,41 @@ export default function SelectWidget<
   );
 
   return (
-    <FormControl required={required}>
-      <FormControl.Label htmlFor={id}>{label || schema.title}</FormControl.Label>
-      <Select
+    <FormControl id={id} required={required}>
+      <FormControl.Label visuallyHidden={!(label || schema.title)} htmlFor={id}>{label || schema.title}</FormControl.Label>
+      {(multiple && Array.isArray(enumOptions)) ? <SelectPanel
+        placeholderText={(label || schema.title) ?? ""}
+        renderAnchor={({children, 'aria-labelledby': ariaLabelledBy, ...anchorProps}) => (
+          <Button
+            trailingAction={TriangleDownIcon}
+            aria-labelledby={` ${ariaLabelledBy}`}
+            {...anchorProps}
+            onClick={(e: any) => {
+              setOpen(!open)
+              e.preventDefault()
+            }}
+          >
+            {children || 'Select Labels'}
+          </Button>
+        )}
+        open={open}
+        onOpenChange={setOpen}
+        items={items ?? []}
+        selected={
+          (items ?? []).filter((val, i: number) => {
+            return selectedIndexes?.includes(String(i))
+          })}
+        onSelectedChange={
+          (selected: any) => {
+            onChange(enumOptionsValueForIndex<S>(selected.map((v:any) => v.id), enumOptions, optEmptyVal))
+          }
+        }
+        onFilterChange={() => null}
+        showItemDividers
+        overlayProps={{width: 'small'}}
+      /> : <Select
         id={id}
         name={id}
-        //label={label || schema.title}
         value={isEmpty ? emptyValue : selectedIndexes}
         disabled={disabled || readonly}
         autoFocus={autofocus}
@@ -83,6 +125,7 @@ export default function SelectWidget<
         onChange={_onChange}
         onBlur={_onBlur}
         onFocus={_onFocus}
+        defaultValue={undefined}
         {...(selectFieldProps as SelectProps)}
         aria-describedby={ariaDescribedByIds<T>(id)}
       >
@@ -96,7 +139,7 @@ export default function SelectWidget<
               </Select.Option>
             );
           })}
-      </Select>
+      </Select>}
     </FormControl>
   );
 }
