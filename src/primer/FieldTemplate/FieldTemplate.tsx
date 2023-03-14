@@ -66,6 +66,7 @@ export default function FieldTemplate<
       registry={registry}
     >
       <FormControl required={required}>
+        <FormControl.Label visuallyHidden={true}/>
         {children}
         {displayLabel && rawDescription ? (
           <FormControl.Caption id={id}>{rawDescription}</FormControl.Caption>

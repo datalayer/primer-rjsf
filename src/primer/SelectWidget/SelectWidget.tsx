@@ -115,7 +115,6 @@ export default function SelectWidget<
         showItemDividers
         overlayProps={{width: 'small'}}
       /> : <Select
-        id={id}
         name={id}
         value={isEmpty ? emptyValue : selectedIndexes}
         disabled={disabled || readonly}

@@ -26,7 +26,7 @@ export default function ErrorList<
         <>
           {errors.map((error, i: number) => {
             return (
-              <Flash variant="danger" sx={{marginTop: 2}}>{error.stack}</Flash>
+              <Flash variant="danger" sx={{marginTop: 2}} key={i}>{error.stack}</Flash>
             );
           })}
         </>

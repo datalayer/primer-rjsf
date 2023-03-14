@@ -51,7 +51,6 @@ export default function RadioWidget<
       <>
         {Array.isArray(enumOptions) &&
           enumOptions.map((option, index) => {
-            console.log(option)
             const itemDisabled =
               Array.isArray(enumDisabled) &&
               enumDisabled.indexOf(option.value) !== -1;

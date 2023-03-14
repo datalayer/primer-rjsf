@@ -67,12 +67,11 @@ export default function WrapIfAdditionalTemplate<
       style={style}
     >
       <Box pr={2} sx={{flexBasis: 0, flexGrow: 1, maxWidth: '100%'}}>
-        <FormControl required={required}>
+        <FormControl id={`${id}-key`} required={required}>
           <FormControl.Label>{keyLabel}</FormControl.Label>
           <TextInput
             defaultValue={label}
             disabled={disabled || readonly}
-            id={`${id}-key`}
             name={`${id}-key`}
             onBlur={!readonly ? handleBlur : undefined}
             type="text"
