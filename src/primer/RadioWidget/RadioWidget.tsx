@@ -56,7 +56,7 @@ export default function RadioWidget<
               Array.isArray(enumDisabled) &&
               enumDisabled.indexOf(option.value) !== -1;
             const radio = (
-              <FormControl id={optionId(id, index)}>
+              <FormControl id={optionId(id, index)} key={optionId(id, index)}>
                 <Radio
                   value={String(index)}
                   onChange={_onChange}
