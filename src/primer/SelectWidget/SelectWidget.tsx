@@ -96,7 +96,7 @@ export default function SelectWidget<
               e.preventDefault()
             }}
           >
-            {children || 'Select Labels'}
+            {children || `Select ${label || schema.title}`}
           </Button>
         )}
         open={open}
