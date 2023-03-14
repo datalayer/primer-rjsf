@@ -45,10 +45,8 @@ export default function CheckboxWidget<
   }: FocusEvent<HTMLInputElement | any>) => onFocus(id, value);
 
   return (
-    <FormControl>
-      <Checkbox 
-        id={id}
-        name={id}
+    <FormControl id={id}>
+      <Checkbox
         checked={typeof value === "undefined" ? false : Boolean(value)}
         required={required}
         disabled={disabled || readonly}

@@ -59,7 +59,7 @@ export default function CheckboxesWidget<
     onFocus(id, enumOptionsValueForIndex<S>(value, enumOptions, emptyValue));
 
   return (
-    <CheckboxGroup id={id} required={required}>
+    <CheckboxGroup required={required}>
       <CheckboxGroup.Label>
         {label || schema.title}
       </CheckboxGroup.Label>
@@ -73,10 +73,8 @@ export default function CheckboxesWidget<
             Array.isArray(enumDisabled) &&
             enumDisabled.indexOf(option.value) !== -1;
           return (
-            <FormControl>
+            <FormControl id={optionId(id, index)} key={optionId(id, index)}>
               <Checkbox
-                id={optionId(id, index)}
-                name={id}
                 checked={checked}
                 disabled={disabled || itemDisabled || readonly}
                 autoFocus={autofocus && index === 0}
