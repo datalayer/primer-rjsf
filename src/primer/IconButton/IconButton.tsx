@@ -1,5 +1,5 @@
 import { IconButton, IconButtonProps as PrimerIconButtonProps, Tooltip } from "@primer/react";
-import { ArrowUpIcon, ArrowDownIcon, TrashIcon, Icon } from '@primer/octicons-react';
+import { CopyIcon, ArrowUpIcon, ArrowDownIcon, TrashIcon, Icon } from '@primer/octicons-react';
 import {
   FormContextType,
   IconButtonProps,
@@ -26,6 +26,23 @@ export default function PrimerIconButton<
         {...props as any}
       />
     </Tooltip>
+  );
+}
+
+export function CopyButton<
+  T = any,
+  S extends StrictRJSFSchema = RJSFSchema,
+  F extends FormContextType = any
+>(props: IconButtonProps<T, S, F>) {
+  const {
+    registry: { translateString },
+  } = props;
+  return (
+    <PrimerIconButton
+      title={translateString(TranslatableString.CopyButton)}
+      {...props}
+      icon={CopyIcon}
+    />
   );
 }
 

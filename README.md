@@ -41,5 +41,5 @@ yarn storybook
 ## About React JSON Schema Form
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
-- Documentation https://rjsf-team.github.io/react-jsonschema-form/docs
 - Source https://github.com/rjsf-team/react-jsonschema-form
+- Documentation https://rjsf-team.github.io/react-jsonschema-form/docs
