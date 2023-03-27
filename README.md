@@ -6,9 +6,12 @@
 
 This repository contains the [Primer](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form). It will generate Primer forms from your [JSON Schema](https://json-schema.org).
 
-You can browse the [online playground](https://datalayer.github.io/rjsf-primer). A simple example is available on [this codesanbox](https://codesandbox.io/p/sandbox/rjsf-primer-example-4kcrrp?file=%2Fpackage.json).
-
 This package is published in NPM as `@datalayer/rjsf-primer`.
+
+Browse the [playground](https://datalayer.github.io/rjsf-primer) or try the simple example:
+
+- [StackBlitz](https://stackblitz.com/edit/primer-rjsf-khkhzq?file=App.tsx)
+- [CodeSanbox](https://codesandbox.io/p/sandbox/rjsf-primer-example-4kcrrp?file=%2Fpackage.json)
 
 <div align="center" style="text-align: center">
   <img alt="RJSF Primer Codesanbox" src="https://datalayer-jupyter-examples.s3.amazonaws.com/rjsf-primer-codesandbox.png" />
