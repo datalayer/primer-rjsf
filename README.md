@@ -41,6 +41,8 @@ yarn storybook
 - Storybook https://primer.style/react/storybook
 - Icons https://primer.style/design/foundations/icons
 
+There is a [discussion](https://github.com/primer/react/discussions/3152) about this repo at the `primer/react` repository.
+
 ## About React JSON Schema Form
 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
