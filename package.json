@@ -33,7 +33,7 @@
     "@mui/material": "5.10.7",
     "@mui/styles": "5.10.7",
     "@primer/octicons-react": "18.2.0",
-    "@primer/react": "35.24.0",
+    "@primer/react": "35.25.1",
     "@rjsf/core": "5.3.0",
     "@rjsf/utils": "5.3.0",
     "@rjsf/validator-ajv6": "5.3.0",
