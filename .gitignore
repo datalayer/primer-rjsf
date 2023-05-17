@@ -1,3 +1,5 @@
+.*
+
 # Logs
 logs
 *.log
@@ -25,3 +27,17 @@ dist-ssr
 *.sw?
 
 lib
+
+# Include
+!**/.*rc.yml
+!**/.*ignore
+!**/.*cfg
+!**/.*rc
+!**/.*rc.js
+!**/.*rc.json
+!**/.*rc.yml
+!**/.*config
+!**/.datalayer
+!**/.github
+!**/.storybook
+!**/.vscode
