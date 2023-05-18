@@ -1,5 +1,5 @@
 {
-  "name": "@datalayer/rjsf-primer",
+  "name": "@datalayer/primer-rjsf",
   "description": "React JSON Schema Form (RJSF) for Primer",
   "version": "0.0.7",
   "main": "lib/index.js",
@@ -8,9 +8,9 @@
     "json-schema-form",
     "primer"
   ],
-  "homepage": "https://datalayer.github.io/rjsf-primer",
+  "homepage": "https://datalayer.github.io/primer-rjsf",
   "bugs": {
-    "url": "https://github.com/datalayer/rjsf-primer/issues"
+    "url": "https://github.com/datalayer/primer-rjsf/issues"
   },
   "license": "BSD-3-Clause",
   "files": [
