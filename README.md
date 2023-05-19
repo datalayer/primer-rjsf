@@ -14,7 +14,7 @@ Browse the [playground](https://datalayer.github.io/primer-rjsf) or try the simp
 - [CodeSanbox](https://codesandbox.io/p/sandbox/primer-rjsf-example-4kcrrp?file=%2Fpackage.json)
 
 <div align="center" style="text-align: center">
-  <img alt="RJSF Primer Codesanbox" src="https://datalayer-jupyter-examples.s3.amazonaws.com/primer-rjsf-codesandbox.png" />
+  <img alt="RJSF Primer Codesanbox" src="https://datalayer-jupyter-examples.s3.amazonaws.com/primer-rjsf.png" />
 </div>
 
 ## Develop
