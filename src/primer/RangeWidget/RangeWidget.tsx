@@ -1,5 +1,5 @@
 import { FormControl } from "@primer/react"
-import Slider from "@mui/material/Slider";
+import { Slider } from "@datalayer/primer-addons";
 import {
   ariaDescribedByIds,
   FormContextType,
@@ -23,8 +23,6 @@ export default function RangeWidget<
     value,
     readonly,
     disabled,
-    onBlur,
-    onFocus,
     options,
     schema,
     onChange,
@@ -33,14 +31,9 @@ export default function RangeWidget<
   } = props;
   const sliderProps = { value, label, id, name: id, ...rangeSpec<S>(schema) };
 
-  const _onChange = (_: any, value?: number | number[]) => {
+  const _onChange = (value?: number) => {
     onChange(value ?? options.emptyValue);
   };
-  const _onBlur = ({ target: { value } }: React.FocusEvent<HTMLInputElement>) =>
-    onBlur(id, value);
-  const _onFocus = ({
-    target: { value },
-  }: React.FocusEvent<HTMLInputElement>) => onFocus(id, value);
 
   return (
     <>
@@ -50,9 +43,6 @@ export default function RangeWidget<
       <Slider
         disabled={disabled || readonly}
         onChange={_onChange}
-        onBlur={_onBlur}
-        onFocus={_onFocus}
-        valueLabelDisplay="auto"
         {...sliderProps}
         aria-describedby={ariaDescribedByIds<T>(id)}
       />
