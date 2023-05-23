@@ -26,7 +26,7 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
-    "@datalayer/primer-addons": "^0.0.7",
+    "@datalayer/primer-addons": "0.0.9",
     "@emotion/cache": "11.10.5",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
