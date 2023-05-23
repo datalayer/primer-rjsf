@@ -27,9 +27,6 @@
   },
   "dependencies": {
     "@datalayer/primer-addons": "0.0.9",
-    "@emotion/cache": "11.10.5",
-    "@emotion/react": "11.10.6",
-    "@emotion/styled": "11.10.6",
     "@primer/octicons-react": "18.2.0",
     "@primer/react": "35.25.1",
     "@rjsf/core": "5.3.0",
