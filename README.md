@@ -33,12 +33,6 @@ Start the playground.
 yarn dev
 ```
 
-Start the storybook.
-
-```bash
-yarn storybook
-```
-
 ## About Primer React
 
 - GitHub repository https://github.com/primer/react
