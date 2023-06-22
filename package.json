@@ -28,7 +28,7 @@
   "dependencies": {
     "@datalayer/primer-addons": "0.0.13",
     "@primer/octicons-react": "18.2.0",
-    "@primer/react": "35.25.1",
+    "@primer/react": "35.26.0",
     "@rjsf/core": "5.3.0",
     "@rjsf/utils": "5.3.0",
     "@rjsf/validator-ajv6": "5.3.0",
