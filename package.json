@@ -8,6 +8,10 @@
     "json-schema-form",
     "primer"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datalayer/primer-addons.git"
+  },
   "homepage": "https://datalayer.github.io/primer-rjsf",
   "bugs": {
     "url": "https://github.com/datalayer/primer-rjsf/issues"
@@ -26,7 +30,7 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
-    "@datalayer/primer-addons": "0.0.13",
+    "@datalayer/primer-addons": "0.0.14",
     "@primer/octicons-react": "18.2.0",
     "@rjsf/core": "5.3.0",
     "@rjsf/utils": "5.3.0",
