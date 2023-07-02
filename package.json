@@ -30,8 +30,7 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
-    "@datalayer/primer-addons": "0.0.14",
-    "@primer/octicons-react": "18.2.0",
+    "@datalayer/primer-addons": "0.0.16",
     "@rjsf/core": "5.3.0",
     "@rjsf/utils": "5.3.0",
     "@rjsf/validator-ajv6": "5.3.0",
