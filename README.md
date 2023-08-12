@@ -4,7 +4,7 @@
 
 # ⚛️ ✔️ React JSON Schema Form (RJSF) for Primer
 
-> [Primer](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form).
+> [Primer React](https://github.com/primer/react) binding for [React JSON Schema Form](https://github.com/rjsf-team/react-jsonschema-form).
 
 It allows you to generate Primer forms from your [JSON Schema](https://json-schema.org).
 
@@ -47,3 +47,7 @@ There is a [discussion](https://github.com/primer/react/discussions/3152) about 
 - Playground https://rjsf-team.github.io/react-jsonschema-form
 - Source https://github.com/rjsf-team/react-jsonschema-form
 - Documentation https://rjsf-team.github.io/react-jsonschema-form/docs
+
+## Releases
+
+Primer RJSF is released in [Npm.js](https://www.npmjs.com/package/@datalayer/primer-rjsf).
