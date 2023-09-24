@@ -112,7 +112,7 @@ export default function SelectWidget<
           }
         }
         onFilterChange={() => null}
-        showDividers
+//        showDividers
         overlayProps={{width: 'small'}}
       /> : <Select
         name={id}
