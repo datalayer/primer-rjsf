@@ -5,5 +5,5 @@ name: datalayer
 channels:
   - conda-forge
 dependencies:
-  - nodejs=18.16.1
+  - nodejs=18.17.1
   - yarn=3.5.0
