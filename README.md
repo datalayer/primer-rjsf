@@ -10,7 +10,7 @@ It allows you to generate Primer forms from your [JSON Schema](https://json-sche
 
 This package is published in NPM as `@datalayer/primer-rjsf`.
 
-Browse the [playground](https://datalayer.github.io/primer-rjsf) or try the simple examples.
+Browse the [playground](https://primer-rjsf.datalayer.tech) or try the simple examples.
 
 - [StackBlitz](https://stackblitz.com/edit/primer-rjsf-khkhzq?file=App.tsx)
 - [CodeSanbox](https://codesandbox.io/p/sandbox/primer-rjsf-example-4kcrrp?file=%2Fpackage.json)

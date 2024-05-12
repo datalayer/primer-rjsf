@@ -49,6 +49,21 @@ install: ## install npm dependencies
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
 		yarn )
 
-publish: # publish the npm packages
+publish-npm: # publish the npm packages
 	yarn build && \
 		npm publish --access public
+	echo https://www.npmjs.com/package/@datalayer/primer-rjsf?activeTab=versions
+
+publish: ## publish
+	($(CONDA_ACTIVATE) ${ENV_NAME}; \
+	  yarn build && \
+	  aws s3 cp \
+		./dist \
+		s3://datalayer-primer-rjsf/ \
+		--recursive \
+		--profile datalayer && \
+	  aws cloudfront create-invalidation \
+		--distribution-id E20WB5SAS9B4SE \
+		--paths "/*" \
+		--profile datalayer && \
+	echo open ✨  https://primer-rjsf.datalayer.tech )
