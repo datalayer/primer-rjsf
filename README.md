@@ -30,7 +30,14 @@ yarn
 Start the playground.
 
 ```bash
+# open http://localhost:5173
 yarn dev
+```
+
+You can display examples chaning the imports of the `main.tsx` file.
+
+```ts
+import App from './examples/FormExample1';
 ```
 
 ## About Primer React
