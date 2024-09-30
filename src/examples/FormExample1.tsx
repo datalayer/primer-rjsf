@@ -15,7 +15,15 @@ const schema: RJSFSchema = {
 
 const FormExample1 = () => {
   return (
-    <Form schema={schema} validator={validator} />
+    <Form
+      schema={schema}
+      validator={validator}
+      onSubmit={({ formData }, e) => {
+        console.log("submitted formData", formData);
+        console.log("submit event", e);
+        window.alert("Form submitted");
+      }}
+    />
   )
 }
 
