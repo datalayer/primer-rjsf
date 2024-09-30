@@ -34,7 +34,7 @@ Start the playground.
 yarn dev
 ```
 
-You can display examples chaning the imports of the `main.tsx` file.
+You can display examples changing the imports of the `main.tsx` file.
 
 ```ts
 import App from './examples/FormExample1';
