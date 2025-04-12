@@ -21,11 +21,11 @@ all: clean install build publish
 
 build: ## build all modules
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn build )
+		npm run build )
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn dev )
+		npm dev )
 
 clean: ## deletes node_modules, lib, build... folders and other generated info, lock, log... files
 	find . -name node_modules | xargs rm -fr {} || true
@@ -47,16 +47,16 @@ env: ## create a conda environment
 
 install: ## install npm dependencies
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		yarn )
+		npm )
 
 publish-npm: # publish the npm packages
-	yarn build && \
+	npm run build && \
 		npm publish --access public
 	echo https://www.npmjs.com/package/@datalayer/primer-rjsf?activeTab=versions
 
 publish: ## publish
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-	  yarn build && \
+	  npm run build && \
 	  aws s3 cp \
 		./dist \
 		s3://datalayer-primer-rjsf/ \
