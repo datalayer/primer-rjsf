@@ -15,7 +15,7 @@ export default function PrimerIconButton<
 >({uiSchema, color, title, icon, ...props }: Omit<IconButtonProps<T, S, F>, "icon"> & {icon: Icon}) {
   if (!color) color = "primary"
   return (
-    <Tooltip sx={{p: 1}} aria-label={color}>
+    <Tooltip sx={{p: 1}} aria-label={color} text="">
       <IconButton
         variant={color as PrimerIconButtonProps["variant"]}
         size="small"

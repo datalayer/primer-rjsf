@@ -15,7 +15,7 @@ export default function AddButton<
 >({ uiSchema, registry, ...props }: IconButtonProps<T, S, F>) {
   const { translateString } = registry;
   return (
-    <Tooltip aria-label={translateString(TranslatableString.AddItemButton)}>
+    <Tooltip aria-label={translateString(TranslatableString.AddItemButton)} text={translateString(TranslatableString.AddItemButton)}>
       <IconButton
         variant="primary"
         size="small"
