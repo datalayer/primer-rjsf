@@ -24,7 +24,7 @@ Browse the [playground](https://primer-rjsf.datalayer.tech) or try the simple ex
 Install the dependencies.
 
 ```bash
-yarn
+npm i
 ```
 
 Start the playground.

@@ -27,6 +27,7 @@
     "dev": "vite",
     "predeploy": "npm run build",
     "preview": "vite preview",
+    "start": "vite",
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
