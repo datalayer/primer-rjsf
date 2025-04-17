@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/primer-rjsf",
   "description": "React JSON Schema Form (RJSF) for Primer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "keywords": [
     "react",
