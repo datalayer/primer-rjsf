@@ -3,6 +3,7 @@ import v6Validator from "@rjsf/validator-ajv6";
 import localize_es from "ajv-i18n/localize/es";
 import Ajv2019 from "ajv/dist/2019.js";
 import Ajv2020 from "ajv/dist/2020.js";
+import { ThemeProvider, BaseStyles } from "@primer/react";
 import { Theme as PrimerTheme } from "./primer";
 import Playground from "./playground/Playground";
 
@@ -43,9 +44,11 @@ const themes = {
 
 function App() {
   return (
-    <>
-      <Playground themes={themes} validators={validators} />
-    </>
+    <ThemeProvider>
+      <BaseStyles>
+        <Playground themes={themes} validators={validators} />
+      </BaseStyles>
+    </ThemeProvider>
   )
 }
 

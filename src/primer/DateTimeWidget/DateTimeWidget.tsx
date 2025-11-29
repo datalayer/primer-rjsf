@@ -32,9 +32,6 @@ export default function DateTimeWidget<
   return (
     <BaseInputTemplate
       type="datetime-local"
-      InputLabelProps={{
-        shrink: true,
-      }}
       {...props}
       value={value}
       onChange={onChange}
