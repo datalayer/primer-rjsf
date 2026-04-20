@@ -1,12 +1,7 @@
-import { IconButton, IconButtonProps as PrimerIconButtonProps, Tooltip } from "@primer/react";
+import { IconButton, IconButtonProps as PrimerIconButtonProps } from "@primer/react";
+// import { Tooltip } from "@primer/react";
 import { CopyIcon, ArrowUpIcon, ArrowDownIcon, TrashIcon, Icon } from '@primer/octicons-react';
-import {
-  FormContextType,
-  IconButtonProps,
-  RJSFSchema,
-  StrictRJSFSchema,
-  TranslatableString,
-} from "@rjsf/utils";
+import { FormContextType, IconButtonProps, RJSFSchema, StrictRJSFSchema, TranslatableString } from "@rjsf/utils";
 
 export default function PrimerIconButton<
   T = any,
@@ -15,7 +10,9 @@ export default function PrimerIconButton<
 >({uiSchema, color, title, icon, ...props }: Omit<IconButtonProps<T, S, F>, "icon"> & {icon: Icon}) {
   if (!color) color = "primary"
   return (
-    <Tooltip sx={{p: 1}} aria-label={color}>
+    /*
+    <Tooltip sx={{p: 1}} aria-label={color} text="">
+    */
       <IconButton
         variant={color as PrimerIconButtonProps["variant"]}
         size="small"
@@ -25,7 +22,9 @@ export default function PrimerIconButton<
         aria-label={title}
         {...props as any}
       />
+    /*
     </Tooltip>
+    */
   );
 }
 

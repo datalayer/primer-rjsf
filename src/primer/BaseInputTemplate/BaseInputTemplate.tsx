@@ -39,18 +39,16 @@ export default function BaseInputTemplate<
     rawErrors = [],
     formContext,
     registry,
+    hideLabel,
+    hideError,
     ...textFieldProps
   } = props;
   const inputProps = getInputProps<T, S, F>(schema, type, options);
-  // Now we need to pull out the step, min, max into an inner `inputProps` for material-ui
+  // Extract step, min, max - these are valid HTML input attributes
   const { step, min, max, ...rest } = inputProps;
+  // Don't create nested inputProps - pass step, min, max directly if needed
+  // Primer TextInput doesn't use inputProps pattern like Material-UI
   const otherProps = {
-    inputProps: {
-      step,
-      min,
-      max,
-      ...(schema.examples ? { list: examplesId<T>(id) } : undefined),
-    },
     ...rest,
   };
   const _onChange = ({

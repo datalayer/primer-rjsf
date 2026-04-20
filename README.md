@@ -24,14 +24,14 @@ Browse the [playground](https://primer-rjsf.datalayer.tech) or try the simple ex
 Install the dependencies.
 
 ```bash
-yarn
+npm i
 ```
 
 Start the playground.
 
 ```bash
 # open http://localhost:5173
-yarn dev
+npm dev
 ```
 
 You can display examples changing the imports of the `main.tsx` file.
