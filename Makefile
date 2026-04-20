@@ -25,7 +25,7 @@ build: ## build all modules
 
 start: ## start
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm dev )
+		npm run dev )
 
 clean: ## deletes node_modules, lib, build... folders and other generated info, lock, log... files
 	find . -name node_modules | xargs rm -fr {} || true
@@ -47,7 +47,7 @@ env: ## create a conda environment
 
 install: ## install npm dependencies
 	($(CONDA_ACTIVATE) ${ENV_NAME}; \
-		npm )
+		npm install )
 
 publish-npm: # publish the npm packages
 	npm run build && \

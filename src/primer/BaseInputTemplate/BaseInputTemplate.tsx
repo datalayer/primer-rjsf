@@ -44,12 +44,14 @@ export default function BaseInputTemplate<
     ...textFieldProps
   } = props;
   const inputProps = getInputProps<T, S, F>(schema, type, options);
-  // Extract step, min, max - these are valid HTML input attributes
+  // Extract step/min/max so we can forward them as native input attributes.
   const { step, min, max, ...rest } = inputProps;
-  // Don't create nested inputProps - pass step, min, max directly if needed
-  // Primer TextInput doesn't use inputProps pattern like Material-UI
   const otherProps = {
+    ...(Array.isArray(schema.examples) ? { list: examplesId<T>(id) } : undefined),
     ...rest,
+    ...(step !== undefined ? { step } : undefined),
+    ...(min !== undefined ? { min } : undefined),
+    ...(max !== undefined ? { max } : undefined),
   };
   const _onChange = ({
     target: { value },

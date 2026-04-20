@@ -31,14 +31,22 @@ Start the playground.
 
 ```bash
 # open http://localhost:5173
-npm dev
+npm run dev
 ```
 
-You can display examples changing the imports of the `main.tsx` file.
+Run the dedicated entries directly.
 
-```ts
-import App from './examples/FormExample1';
+```bash
+# open the simple Primer form example
+npm run dev:example
+
+# open the full playground
+npm run dev:playground
 ```
+
+The default entry at `/` renders the Primer example and `/playground.html` renders the full playground.
+
+You can still customize examples by editing `src/main.tsx` or `src/main.playground.tsx`.
 
 ## About Primer React
 

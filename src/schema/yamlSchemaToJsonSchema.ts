@@ -10,6 +10,8 @@ const PRIMITIVE_TYPES = new Set([
   "null",
 ]);
 
+const LITERAL_ARRAY_KEYS = new Set(["required", "enum", "type", "examples"]);
+
 function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -22,7 +24,7 @@ function inferEnumType(values: unknown[]): string | undefined {
   return undefined;
 }
 
-function convertSchemaNode(node: unknown): unknown {
+function convertSchemaNode(node: unknown, parentKey?: string): unknown {
   if (typeof node === "string") {
     if (PRIMITIVE_TYPES.has(node)) {
       return { type: node };
@@ -31,7 +33,13 @@ function convertSchemaNode(node: unknown): unknown {
   }
 
   if (Array.isArray(node)) {
-    return node.map(item => convertSchemaNode(item));
+    if (
+      (parentKey && LITERAL_ARRAY_KEYS.has(parentKey)) ||
+      node.every(item => !isJsonObject(item) && !Array.isArray(item))
+    ) {
+      return node;
+    }
+    return node.map(item => convertSchemaNode(item, parentKey));
   }
 
   if (!isJsonObject(node)) {
@@ -46,7 +54,7 @@ function convertSchemaNode(node: unknown): unknown {
       const requiredFromProperties: string[] = [];
 
       for (const [propName, propSchema] of Object.entries(value)) {
-        const convertedProperty = convertSchemaNode(propSchema);
+        const convertedProperty = convertSchemaNode(propSchema, propName);
         if (isJsonObject(convertedProperty)) {
           if (convertedProperty.required === true) {
             requiredFromProperties.push(propName);
@@ -75,11 +83,11 @@ function convertSchemaNode(node: unknown): unknown {
     }
 
     if (key === "items") {
-      converted.items = convertSchemaNode(value);
+      converted.items = convertSchemaNode(value, key);
       continue;
     }
 
-    converted[key] = convertSchemaNode(value);
+    converted[key] = convertSchemaNode(value, key);
   }
 
   if (

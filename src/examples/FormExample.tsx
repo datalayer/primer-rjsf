@@ -7,7 +7,7 @@ import Form from "./../index";
 type Todo = {
   title: string;
   type: string;
-  required: [string];
+  required: string[];
   properties: Record<string, any>;
 }
 

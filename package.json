@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/primer-rjsf",
   "description": "React JSON Schema Form (RJSF) for Primer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "keywords": [
     "react",
@@ -27,6 +27,8 @@
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
+    "dev:example": "vite --open /",
+    "dev:playground": "vite --open /playground.html",
     "predeploy": "npm run build",
     "preview": "vite preview",
     "start": "vite",
@@ -63,6 +65,7 @@
     "babel-loader": "^8.3.0",
     "gh-pages": "^5.0.0",
     "prettier": "^3.3.2",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
   }
