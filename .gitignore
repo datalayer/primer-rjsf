@@ -9,6 +9,8 @@ yarn-error.log*
 yarn.lock
 pnpm-debug.log*
 lerna-debug.log*
+*.tsbuildinfo
+*.d.ts
 
 node_modules
 dist

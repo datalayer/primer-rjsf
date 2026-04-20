@@ -1,7 +1,7 @@
 {
   "name": "@datalayer/primer-rjsf",
   "description": "React JSON Schema Form (RJSF) for Primer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "keywords": [
     "react",
@@ -22,16 +22,19 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
+    "build:lib": "npm run clean:lib && tsc",
     "build-storybook": "build-storybook",
+    "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "predeploy": "npm run build",
     "preview": "vite preview",
     "start": "vite",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "watch:lib": "tsc -w"
   },
   "dependencies": {
-    "@datalayer/primer-addons": "^1.0.3",
+    "@datalayer/primer-addons": "^1.0.12",
     "@rjsf/core": "^5.3.0",
     "@rjsf/utils": "^5.3.0",
     "@rjsf/validator-ajv6": "^5.3.0",
@@ -53,9 +56,9 @@
     "@storybook/builder-vite": "^9.0.15",
     "@storybook/react": "^9.0.15",
     "@storybook/testing-library": "^0.2.2",
+    "@types/prettier": "^3.0.0",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
-    "@types/prettier": "^3.0.0",
     "@vitejs/plugin-react": "^4.5.2",
     "babel-loader": "^8.3.0",
     "gh-pages": "^5.0.0",
