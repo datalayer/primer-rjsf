@@ -1,4 +1,4 @@
-import {Box, Flash, Heading} from '@primer/react'
+import {Box, Flash} from '@primer/react'
 import {
   ErrorListProps,
   FormContextType,
@@ -20,9 +20,10 @@ export default function ErrorList<
   return (
     <Box mb={3} sx={{borderWidth: 1, borderStyle: 'solid', borderColor: 'border.default', borderRadius: 2}}>
       <Box p={3}>
-        <Heading as="h3" sx={{fontSize: 3}}>
+        {/* A Box drawn as Primer's heading: Primer 37 types no `sx` on Heading. */}
+        <Box as="h3" sx={{fontSize: 3, fontWeight: 'semibold', m: 0}}>
           {translateString(TranslatableString.ErrorsLabel)}
-        </Heading>
+        </Box>
         <>
           {errors.map((error, i: number) => {
             return (

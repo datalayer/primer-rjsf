@@ -1,4 +1,3 @@
-import { any } from "prop-types";
 import React from "react";
 
 class ErrorBoundary extends React.Component<any, any> {
