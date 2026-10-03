@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@datalayer/icons-react": "^1.0.0",
-    "@datalayer/primer-addons": "^1.0.12",
-    "@primer/octicons-react": "^19.29.1",
+    "@datalayer/primer-addons": "^1.0.23",
+    "@primer/octicons-react": "^19.35.0",
     "@primer/primitives": "^10.7.0",
     "@primer/react": "^37.31.0",
     "@rjsf/core": "^5.3.0",
