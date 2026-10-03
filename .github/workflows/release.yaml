@@ -50,7 +50,8 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
+          # No `registry-url`: with one, setup-node writes a placeholder token
+          # that npm would use instead of trusted publishing (OIDC).
       # Trusted publishing needs npm 11.5.1 or later.
       - run: npm install -g npm@latest
       - uses: actions/download-artifact@v4

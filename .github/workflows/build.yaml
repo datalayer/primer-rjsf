@@ -10,7 +10,9 @@ on:
   workflow_call:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  # Its own name, not `github.workflow`: called by `release.yaml`, that is
+  # the caller's, and a group the caller holds would make each wait on the other.
+  group: build-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:

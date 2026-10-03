@@ -10,8 +10,8 @@ no token is stored in the repository.
 
    ```bash
    git checkout main && git pull
-   git tag v1.0.4
-   git push origin v1.0.4
+   git tag v1.0.5
+   git push origin v1.0.5
    ```
 
 The workflow checks that the tag equals the `package.json` version (it stops otherwise),
