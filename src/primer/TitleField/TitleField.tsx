@@ -1,4 +1,4 @@
-import {Box, Heading} from "@primer/react";
+import {Box} from "@primer/react";
 import {
   FormContextType,
   TitleFieldProps,
@@ -17,7 +17,7 @@ export default function TitleField<
 >({ id, title }: TitleFieldProps<T, S, F>) {
   return (
     <Box id={id} my={2}>
-      <Heading as="h5" sx={{fontSize: 1, borderBottom: '1px solid', borderColor: 'border.default', paddingBottom: 1}}>{title}</Heading>
+      <Box as="h5" sx={{fontSize: 1, fontWeight: 'semibold', m: 0, borderBottom: '1px solid', borderColor: 'border.default', paddingBottom: 1}}>{title}</Box>
     </Box>
   );
 }
