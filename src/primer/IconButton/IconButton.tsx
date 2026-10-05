@@ -7,7 +7,10 @@ export default function PrimerIconButton<
   S extends StrictRJSFSchema = RJSFSchema,
   F extends FormContextType = any
 >({ color, title, icon, ...props }: Omit<IconButtonProps<T, S, F>, "icon"> & {icon: Icon}) {
-  if (!color) color = "primary"
+  // A control is a line icon in the ink of the page: quiet unless a variant
+  // is asked for, so that a form's buttons add no colour of their own — not a
+  // filled button per item, not a red one to remove it.
+  if (!color) color = "invisible"
   return (
     <IconButton
       variant={color as PrimerIconButtonProps["variant"]}
@@ -85,7 +88,6 @@ export function RemoveButton<
     <PrimerIconButton
       title={translateString(TranslatableString.RemoveButton)}
       {...otherProps}
-      color="danger"
       icon={TrashIcon}
     />
   );
