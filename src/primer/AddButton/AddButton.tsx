@@ -13,8 +13,9 @@ export default function AddButton<
     /*
     <Tooltip aria-label={translateString(TranslatableString.AddItemButton)} text={translateString(TranslatableString.AddItemButton)}>
     */
+      // Outlined: the page's one filled button is its own, not the form's.
       <IconButton
-        variant="primary"
+        variant="default"
         size="small"
         icon={PlusIcon}
         aria-label={translateString(TranslatableString.AddItemButton)}

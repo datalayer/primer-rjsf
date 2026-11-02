@@ -1,4 +1,7 @@
 .*
+# The workflows are not dotfiles to ignore.
+!.github
+!.gitignore
 
 # Logs
 logs

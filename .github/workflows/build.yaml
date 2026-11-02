@@ -1,0 +1,57 @@
+# Copyright (c) 2021-2026 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+concurrency:
+  # Its own name, not `github.workflow`: called by `release.yaml`, that is
+  # the caller's, and a group the caller holds would make each wait on the other.
+  group: build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['22', '24']
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      # The library, as published (`lib/`), and the example site, as deployed.
+      - name: Build
+        run: |
+          npm run build:lib
+          npm run build
+
+      - name: Pack
+        run: |
+          set -euo pipefail
+          mkdir -p dist-npm
+          npm pack --pack-destination dist-npm
+          tar -tzf dist-npm/*.tgz > files.txt
+          grep -q '^package/lib/index.js$' files.txt
+          grep -q '^package/lib/index.d.ts$' files.txt
+
+      - uses: actions/upload-artifact@v4
+        if: matrix.node-version == '22'
+        with:
+          name: npm
+          path: dist-npm/*.tgz

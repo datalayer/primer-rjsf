@@ -1,0 +1,68 @@
+# Copyright (c) 2021-2026 Datalayer, Inc.
+# Distributed under the terms of the Modified BSD License.
+
+# Publishes the release a tag names to npm, with no stored token: npm trusts
+# this workflow file (OIDC trusted publishing). The build is `build.yaml`'s,
+# run here first; the tarball it packs is what is published. See RELEASE.md.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check the tag names the version being released
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(node -p "require('./package.json').version")"
+          echo "tag=$tag @datalayer/primer-rjsf=$version"
+          if [ "$tag" != "$version" ]; then
+            echo "::error::Tag v$tag does not match @datalayer/primer-rjsf $version"
+            exit 1
+          fi
+
+  build:
+    needs: check-tag
+    uses: ./.github/workflows/build.yaml
+
+  npm:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          # No `registry-url`: with one, setup-node writes a placeholder token
+          # that npm would use instead of trusted publishing (OIDC).
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@latest
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm
+          path: dist
+      - name: Publish
+        run: |
+          set -euo pipefail
+          for tarball in dist/*.tgz; do
+            # "./": npm reads a bare "dist/x.tgz" as the GitHub shorthand
+            # github:dist/x.tgz and refuses to fetch it (EALLOWGIT).
+            npm publish "./$tarball" --access public --provenance --loglevel verbose
+          done
